@@ -84,6 +84,8 @@ class TextyTabBarController: UITabBarController, UITabBarControllerDelegate {
                 if let color = tabBarItem.color {
                     buttonsColors.append(color)
                 }
+            } else {
+                fatalError("set tabBarItem number(\(index + 1)) Class as TextyTabBarItem and set its color, image and title")
             }
             let button = UIButton()
             button.tag = index
