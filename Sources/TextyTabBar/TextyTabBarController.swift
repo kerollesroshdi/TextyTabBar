@@ -11,6 +11,8 @@ import UIKit
 @available(iOS 11.0, *)
 class TextyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
+    private let isArabic = Locale.preferredLanguages[0] == "ar" ? true : false
+    
     private var selectedTab: Int = 0
     
     private var buttons = [UIButton]()
@@ -94,8 +96,8 @@ class TextyTabBarController: UITabBarController, UITabBarControllerDelegate {
             button.imageView?.tintColor = .black
             button.titleLabel?.font = font
             button.setTitleColor(.black, for: .normal)
-            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 7.5, bottom: 0, right: 0)
-            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -7.5, bottom: 0, right: 0)
+            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: isArabic ? 0 : 7.5, bottom: 0, right: isArabic ? 7.5 : 0)
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: isArabic ? 0 : -7.5, bottom: 0, right: isArabic ? -7.5 : 0)
             if index == 0 {
                 button.setTitle(viewController.tabBarItem.title, for: .normal)
                 button.setTitleColor(.white, for: .normal)
