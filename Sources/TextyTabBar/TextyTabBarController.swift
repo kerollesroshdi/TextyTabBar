@@ -145,43 +145,55 @@ class TextyTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     @objc private func didSelectIndex(sender: UIButton) {
+        
         let index = sender.tag
-        self.selectedIndex = index
-        self.selectedTab = index
-                
-        for (indx, button) in self.buttons.enumerated() {
-            if indx != index {
-                button.setTitle(nil, for: .normal)
-                button.imageView?.tintColor = .black
-            } else {
-                button.setTitle(self.viewControllers![indx].tabBarItem.title, for: .normal)
-                button.setTitleColor(.white, for: .normal)
-                button.imageView?.tintColor = .white
+        
+        if index == self.selectedIndex {
+            if let vc = self.viewControllers?[self.selectedIndex] as? UINavigationController {
+                vc.popToRootViewController(animated: true)
             }
+        } else {
+            
+            self.selectedIndex = index
+            self.selectedTab = index
+            
+            for (indx, button) in self.buttons.enumerated() {
+                if indx != index {
+                    button.setTitle(nil, for: .normal)
+                    button.imageView?.tintColor = .black
+                } else {
+                    button.setTitle(self.viewControllers![indx].tabBarItem.title, for: .normal)
+                    button.setTitleColor(.white, for: .normal)
+                    button.imageView?.tintColor = .white
+                }
+            }
+            
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                
+                self.indexView.backgroundColor = self.buttonsColors[index]
+                
+                self.indexViewWidthAnchor.isActive = false
+                self.indexViewWidthAnchor = nil
+                self.indexViewWidthAnchor = self.indexView.widthAnchor.constraint(equalTo: self.buttons[index].widthAnchor, constant: -20)
+                self.indexViewWidthAnchor.isActive = true
+                
+                self.indexViewCenterXAnchor.isActive = false
+                self.indexViewCenterXAnchor = nil
+                self.indexViewCenterXAnchor = self.indexView.centerXAnchor.constraint(equalTo: self.buttons[index].centerXAnchor)
+                self.indexViewCenterXAnchor.isActive = true
+                
+                self.view.layoutIfNeeded()
+                
+            }, completion: nil)
+            
         }
         
-        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-            
-            self.indexView.backgroundColor = self.buttonsColors[index]
-                        
-            self.indexViewWidthAnchor.isActive = false
-            self.indexViewWidthAnchor = nil
-            self.indexViewWidthAnchor = self.indexView.widthAnchor.constraint(equalTo: self.buttons[index].widthAnchor, constant: -20)
-            self.indexViewWidthAnchor.isActive = true
-            
-            self.indexViewCenterXAnchor.isActive = false
-            self.indexViewCenterXAnchor = nil
-            self.indexViewCenterXAnchor = self.indexView.centerXAnchor.constraint(equalTo: self.buttons[index].centerXAnchor)
-            self.indexViewCenterXAnchor.isActive = true
-            
-            self.view.layoutIfNeeded()
-            
-        }, completion: nil)
     }
     
     // Delegate:
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        super.tabBar(tabBar, didSelect: item)
         guard
             let items = tabBar.items,
             let index = items.firstIndex(of: item)
