@@ -1,7 +1,7 @@
 # TextyTabBar
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kerollesroshdi/TextyTabBar) ![GitHub last commit](https://img.shields.io/github/last-commit/kerollesroshdi/TextyTabBar) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kerollesroshdi/TextyTabBar?sort=semver) ![](https://img.shields.io/badge/Platform-iOS-orange) <img src="https://img.shields.io/badge/minimum%20iOS%20version-11-red"> 
-![GitHub forks](https://img.shields.io/github/forks/kerollesroshdi/TextyTabBar?style=social) ![GitHub stars](https://img.shields.io/github/stars/kerollesroshdi/TextyTabBar?style=social) [![Twitter Follow](https://img.shields.io/twitter/follow/kerollesroshdi?style=social)](https://twitter.com/intent/follow?screen_name=kerollesroshdi) ![CodeTriage](https://www.codetriage.com/kerollesroshdi/textytabbar/badges/users.svg)
+![GitHub forks](https://img.shields.io/github/forks/kerollesroshdi/TextyTabBar?style=social) ![GitHub stars](https://img.shields.io/github/stars/kerollesroshdi/TextyTabBar?style=social) [![Twitter Follow](https://img.shields.io/twitter/follow/kerollesroshdi?style=social)](https://twitter.com/intent/follow?screen_name=kerollesroshdi) [![Open Source Helpers](https://www.codetriage.com/kerollesroshdi/textytabbar/badges/users.svg)](https://www.codetriage.com/kerollesroshdi/textytabbar)
 
 This package provides a beautiful easy to use custom UITabBarController
 
